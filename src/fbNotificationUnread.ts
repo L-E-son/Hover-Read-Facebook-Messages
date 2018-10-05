@@ -27,8 +27,8 @@ function toggleMessageHoverEvents(mutations) {
     });
 
     if (didAddJewelContent === true) {
-        let messagesContainer = document.querySelector('ul.jewelContent');
-        let messages = Array.from(messagesContainer.getElementsByTagName('li'));
+        const messagesContainer = document.querySelector('ul.jewelContent');
+        const messages = Array.from(messagesContainer.getElementsByTagName('li'));
         messages.forEach(function (message) {
             setTitleOnMessageContent(message);
         });
@@ -36,7 +36,7 @@ function toggleMessageHoverEvents(mutations) {
 }
 
 function addMessageHoverEvents(mutations) {
-    let messages = Array.from(messageContainer.getElementsByTagName("li"));
+    const messages = Array.from(messageContainer.getElementsByTagName("li"));
     
     messages.forEach(function (message) {
         setTitleOnMessageContent(message);
@@ -44,9 +44,9 @@ function addMessageHoverEvents(mutations) {
 }
 
 function setTitleOnMessageContent(element) {
-    let contentDiv = element.querySelector("div.content");
+    const contentDiv = element.querySelector("div.content");
     //Get all divs, but only return the one that is not author or time
-    let messageContainerDiv = contentDiv.querySelector("div:not(.author):not(.time)");
-    let messageContent = messageContainerDiv.querySelector("span > span").innerText;
+    const messageContainerDiv = contentDiv.querySelector("div:not(.author):not(.time)");
+    const messageContent = messageContainerDiv.querySelector("span > span").innerText;
     contentDiv.setAttribute('title', messageContent);
 }
