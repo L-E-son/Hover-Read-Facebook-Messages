@@ -9,6 +9,9 @@
 *.userosscache
 *.sln.docstates
 
+# Generated JS from TS compiler
+output/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

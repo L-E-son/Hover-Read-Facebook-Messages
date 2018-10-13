@@ -13,40 +13,26 @@ var messagesHiddenContainer = document.querySelector('div[aria-labelledby="fbMer
 
 observer.observe(messagesHiddenContainer, config);
 
-function toggleMessageHoverEvents(mutations) {
-    var hadChildListMutation = mutations.some(function (mutation) {
+function toggleMessageHoverEvents(mutations: Array<MutationRecord>) {
+    var hadChildListMutation = mutations.some(mutation => {
         return mutation.type == 'childList';
     });
 
     if (hadChildListMutation === false) {
         return;
     }
-
-    var didAddJewelContent = mutations.some(function (mutation) {
-        return mutation.addedNodes.length > 0 && mutation.target.matches("ul.jewelContent") === true;
-    });
-
-    if (didAddJewelContent === true) {
-        const messagesContainer = document.querySelector('ul.jewelContent');
-        const messages = Array.from(messagesContainer.getElementsByTagName('li'));
-        messages.forEach(function (message) {
-            setTitleOnMessageContent(message);
-        });
-    }
-}
-
-function addMessageHoverEvents(mutations) {
-    const messages = Array.from(messageContainer.getElementsByTagName("li"));
     
-    messages.forEach(function (message) {
+    const messagesContainer = <HTMLUListElement>document.querySelector('ul.jewelContent');
+    const messages = Array.from(messagesContainer.getElementsByTagName('li'));
+    messages.forEach(message => {
         setTitleOnMessageContent(message);
     });
 }
 
-function setTitleOnMessageContent(element) {
+function setTitleOnMessageContent(element: HTMLElement) {
     const contentDiv = element.querySelector("div.content");
     //Get all divs, but only return the one that is not author or time
     const messageContainerDiv = contentDiv.querySelector("div:not(.author):not(.time)");
-    const messageContent = messageContainerDiv.querySelector("span > span").innerText;
+    const messageContent = messageContainerDiv.querySelector("span > span").textContent;
     contentDiv.setAttribute('title', messageContent);
 }
