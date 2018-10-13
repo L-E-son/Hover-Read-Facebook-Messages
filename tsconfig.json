@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "outDir": "output",
+        "target": "esnext",
+        "lib": ["esnext", "dom"],
+        "alwaysStrict": true,
+        "noImplicitAny": true
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

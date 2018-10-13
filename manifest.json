@@ -10,7 +10,7 @@
           "https://*.facebook.com/*"
         ],
         "js": [
-          "fbNotificationUnread.js"
+          "output/fbNotificationUnread.js"
         ]
       }
     ]
